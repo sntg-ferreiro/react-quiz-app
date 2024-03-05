@@ -51,9 +51,10 @@ export const Summary = ({ userAnswers }) => {
       <ol>
         {QUESTIONS.map((q, index) => {
           let ua = userAnswers[index];
+          let qCorrect = q.answers[0];
           let cssClass = "user-answer";
           if (ua) {
-            cssClass += ua === q.answers[0] ? " correct" : " wrong";
+            cssClass += ua === qCorrect ? " correct" : " wrong";
           } else {
             cssClass += " skipped";
           }
@@ -62,6 +63,11 @@ export const Summary = ({ userAnswers }) => {
               <h3>{q.id}</h3>
               <p className="question">{q.text}</p>
               <p className={cssClass}>{ua || "Skipped"}</p>
+              {(!ua || ua !== qCorrect) && (
+                <p className="user-answer help">
+                  The Correct answer was: {qCorrect}
+                </p>
+              )}
             </li>
           );
         })}

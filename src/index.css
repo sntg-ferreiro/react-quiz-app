@@ -316,6 +316,12 @@ header h1 {
   font-weight: normal;
 }
 
+#summary .user-answer.help {
+  color: #4d079e;
+  font-weight: normal;
+  font-style: italic;
+}
+
 #summary-stats {
   display: flex;
   gap: 3rem;
